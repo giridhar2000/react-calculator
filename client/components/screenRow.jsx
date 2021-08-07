@@ -1,8 +1,7 @@
 import React from 'react';
+import '../styles/main.css';
 
-// Screen row component is written as a functional component
-// it receives and displays (in an input field) a props (property) ofvalue from
-// it's parent component
+
 const ScreenRow = (props) => {
 return (
 <div className="screen-row">
@@ -11,8 +10,6 @@ return (
 )
 }
 
-// we describe the props (property) that the parent element isrequired to pass
-// into this component
 ScreenRow.propTypes = {
 value: React.PropTypes.string.isRequired
 }

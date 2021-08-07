@@ -1,7 +1,8 @@
-import React from 'react'; // import react module
+import React from 'react';
 import PropTypes from 'prop-types';
+import '../styles/main.css';
 
-// create our Button component as a functional component
+
 const Button = (props) => {
 return (
 <input
@@ -12,12 +13,12 @@ value={props.label}
 />
 );
 }
-// describe our expected props types
+
 Button.propTypes = {
 type: React.PropTypes.string.isRequired,
 handleClick: React.PropTypes.func.isRequired,
 label: React.PropTypes.string.isRequired
 }
 
-// export our button component.
+
 export default Button;

@@ -1,84 +1,67 @@
-import React from 'react'; // import react module
-import Screen from './screen'; // Import our screen component fromthis directory
-import Button from './button'; 
-import PropTypes from 'prop-types';// Import our button component fromthis directory
+import React from 'react'; 
+import Screen from './screen'; 
+import Button from './button';
+import '../styles/main.css';
+import PropTypes from 'prop-types';
 
-// create a class which extends react component
+
 class Frame extends React.Component {
 constructor() {
 super();
-// set our default state
 this.state = {
     question: '',
     answer: ''
     }
-    // Bind our handleClick method (sets 'this' explicitly to referto this component)
-    // We did this because 'this' would refer to the source of theclick events
     this.handleClick = this.handleClick.bind(this);
     }
-    
-    // Render function to create component to be rendered on the DOM.
-    // This method must return a single parent element as you can see here.
-    // The component is wrapped around () to make it a singleexpression.
     render() {
+        const mystyle = {
+            color: "yellow",
+            backgroundColor: "DodgerBlue",
+            padding: "10px",
+            fontFamily: "Arial"
+          };
     return (
-    <div className="frame">
+    <div style={mystyle} className="frame">
     <div className="calculator-title">
-    R_N Calculator
+    Simple Calculator
     </div>
-    <Screen question={this.state.question}
+    <Screen 
+    
+    question={this.state.question}
     
     answer={this.state.answer}/>
     
     <div className="button-row">
-    <Button label={'1'} handleClick={this.handleClick}
+    <Button label={'1'} handleClick={this.handleClick} type='input' />
     
-    type='input' />
+    <Button label={'2'} handleClick={this.handleClick} type='input' />
     
-    <Button label={'2'} handleClick={this.handleClick}
-    
-    type='input' />
-    
-    <Button label={'3'} handleClick={this.handleClick}
-    
-    type='input' />
-    <Button label={'4'} handleClick={this.handleClick}
+    <Button label={'3'} handleClick={this.handleClick} type='input' />
 
-type='input' />
+    <Button label={'4'} handleClick={this.handleClick} type='input' />
 
-<Button label={'-'} handleClick={this.handleClick}
+<Button label={'-'} handleClick={this.handleClick} type='action' />
 
-type='action' />
+<Button label={'+'} handleClick={this.handleClick} type='action' />
 
-<Button label={'+'} handleClick={this.handleClick}
-
-type='action' />
 </div>
+
 <div className="button-row">
-<Button label={'5'} handleClick={this.handleClick}
+<Button label={'5'} handleClick={this.handleClick} type='input' />
 
-type='input' />
+<Button label={'6'} handleClick={this.handleClick} type='input' />
 
-<Button label={'6'} handleClick={this.handleClick}
+<Button label={'7'} handleClick={this.handleClick} type='input' />
 
-type='input' />
+<Button label={'8'} handleClick={this.handleClick} type='input' />
 
-<Button label={'7'} handleClick={this.handleClick}
+<Button label={'*'} handleClick={this.handleClick} type='action' />
 
-type='input' />
+<Button label={'/'} handleClick={this.handleClick} type='action' />
 
-<Button label={'8'} handleClick={this.handleClick}
-
-type='input' />
-
-<Button label={'*'} handleClick={this.handleClick}
-
-type='action' />
-
-<Button label={'/'} handleClick={this.handleClick}
-
-type='action' />
 </div>
+
 <div className="button-row">
 <Button label={'9'} handleClick={this.handleClick}
 
@@ -104,20 +87,17 @@ type='action' />
 );
 }
 
-// our method to handle all click events from our buttons
-handleClick(event){
-const value = event.target.value; // get the value from thetarget element (button)
-switch (value) {
-case '=': { // if it's an equal sign, use the eval module toevaluate the question
 
-// convert the answer (in number) to String
+handleClick(event){
+const value = event.target.value; 
+switch (value) {
+case '=': { 
 const answer = eval(this.state.question).toString();
-// update answer in our state.
 this.setState({ answer });
 break;
 }
 case 'Cls': {
-// if it's the Cls sign, just clean our question and answerin the state
+
 
 this.setState({ question: '', answer: '' });
 break;
@@ -130,5 +110,5 @@ break;
 }
 }
 }
-// export our frame component. To be used in our client/index.js file
+
 export default Frame;
